@@ -72,7 +72,7 @@ export async function deleteCacheKeys(...keys: string[]): Promise<void> {
 
 /** Redis Stream key — one stream per user for invalidation events */
 export function invalidationStreamKey(userId: string): string {
-  return `jobify:invalidate-stream:${userId}`;
+  return `Jobnix:invalidate-stream:${userId}`;
 }
 
 export type StreamInvalidationPayload = {

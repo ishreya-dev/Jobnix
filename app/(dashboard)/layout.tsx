@@ -1,3 +1,5 @@
+// app/(dashboard)/layout.tsx
+import '@/utils/env';
 import { DashboardNav } from '@/components/layout/dashboard-nav';
 import { PageContainer } from '@/components/layout/page-container';
 import { NavUserProvider } from '@/context/nav-user-context';

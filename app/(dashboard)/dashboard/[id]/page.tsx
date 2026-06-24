@@ -13,7 +13,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Edit Job',
-  description: 'Update or delete a job application in your Jobify tracker.',
+  description: 'Update or delete a job application in your Jobnix tracker.',
   path: '/dashboard',
   noIndex: true,
 });

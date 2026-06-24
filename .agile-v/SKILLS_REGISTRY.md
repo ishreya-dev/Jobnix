@@ -86,7 +86,7 @@ All skills below are registered for this project. Orchestrator loads framework s
 | Gate review | core → compliance → validation summary |
 | C2 planning | core → lifecycle → product-owner |
 
-⭐ = Primary domain skill for Jobify
+⭐ = Primary domain skill for Jobnix
 
 ## This Chat Binding
 

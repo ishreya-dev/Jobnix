@@ -17,14 +17,14 @@ export type JobsInvalidationEvent = {
 type Listener = (event: JobsInvalidationEvent) => void;
 
 declare global {
-  var __jobifyInvalidationListeners: Map<string, Set<Listener>> | undefined;
+  var __JobnixInvalidationListeners: Map<string, Set<Listener>> | undefined;
 }
 
 function getListenerMap(): Map<string, Set<Listener>> {
-  if (!globalThis.__jobifyInvalidationListeners) {
-    globalThis.__jobifyInvalidationListeners = new Map();
+  if (!globalThis.__JobnixInvalidationListeners) {
+    globalThis.__JobnixInvalidationListeners = new Map();
   }
-  return globalThis.__jobifyInvalidationListeners;
+  return globalThis.__JobnixInvalidationListeners;
 }
 
 /** Register SSE subscriber for a user — returns unsubscribe */

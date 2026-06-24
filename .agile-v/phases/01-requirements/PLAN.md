@@ -9,7 +9,7 @@
 
 ## Objective
 
-Capture retroactive baseline requirements from existing Jobify codebase.
+Capture retroactive baseline requirements from existing Jobnix codebase.
 
 ## Inputs
 

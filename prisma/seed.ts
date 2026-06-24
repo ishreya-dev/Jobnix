@@ -21,7 +21,7 @@ import * as path from "path";
 const prisma = new PrismaClient();
 
 // CSV file paths (update these to match your actual paths)
-const CSV_DIR = "/Users/arnob_t78/Papers/Project Doc/db-migration/jobify";
+const CSV_DIR = "/Users/arnob_t78/Papers/Project Doc/db-migration/jobnix";
 
 interface JobRow {
   id: string;

@@ -1,4 +1,4 @@
-# Jobify UI Overhaul — Design Spec
+# Jobnix UI Overhaul — Design Spec
 
 **Date:** 2026-06-12  
 **Scope:** Landing · Auth · Dashboard nav/layout · Route refactor · Add/Edit Job dialogs  

@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = createPageMetadata({
   title: "Sign In",
   description:
-    "Sign in to Jobify to manage your job applications, view analytics, and export your job track data.",
+    "Sign in to Jobnix to manage your job applications, view analytics, and export your job track data.",
   path: "/sign-in",
 });
 

@@ -1,7 +1,7 @@
 {
   "project": {
-    "name": "Jobify — Job Application Tracker",
-    "repo": "18-nextjs-jobify-app",
+    "name": "Jobnix — Job Application Tracker",
+    "repo": "18-nextjs-jobnix-app",
     "framework": "Next.js 16 App Router",
     "language": "TypeScript",
     "domain_build_skill": "build-agent-js"

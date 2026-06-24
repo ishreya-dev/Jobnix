@@ -13,7 +13,7 @@
 
 A production-style, full-stack job application tracker built to teach modern web development patterns: App Router SSR, server actions, typed ORM access, optimistic UI, multi-layer caching, and secure authentication. Track applications, filter and search your pipeline, visualize trends, and export reports—all with a polished glassmorphic UI and dark mode support.
 
-- **Live-Demo:** [https://jobify-tracker.vercel.app/](https://jobify-tracker.vercel.app/)
+- **Live-Demo:** [https://jobnix-tracker.vercel.app/](https://jobnix-tracker.vercel.app/)
 
 ![Screenshot 2025-07-01 at 15 31 44](https://github.com/user-attachments/assets/48f21eef-d40c-4e44-a585-a6b3f2417ebf) ![Screenshot 2025-07-01 at 14 33 39](https://github.com/user-attachments/assets/29e151c8-2deb-4dcd-8856-febb4c043abf) ![Screenshot 2025-07-01 at 14 48 55](https://github.com/user-attachments/assets/bf1eb91e-3b92-40a8-b78f-83ac1157919f) ![Screenshot 2025-07-01 at 14 51 02](https://github.com/user-attachments/assets/e41cb629-a0f8-4301-b926-969bf3d78cc3)
 
@@ -47,7 +47,7 @@ A production-style, full-stack job application tracker built to teach modern web
 
 ## Overview
 
-Jobify helps job seekers **organize**, **track**, and **analyze** their job search in one place. Each authenticated user gets a private dashboard where they can:
+Jobnix helps job seekers **organize**, **track**, and **analyze** their job search in one place. Each authenticated user gets a private dashboard where they can:
 
 - Add job applications (position, company, location, status, employment mode)
 - Search and filter applications
@@ -176,7 +176,7 @@ User action (CreateJobForm / DeleteJobButton)
 ## Project Structure
 
 ```bash
-18-nextjs-jobify-app/
+18-nextjs-jobnix-app/
 ├── app/                              # Next.js App Router
 │   ├── page.tsx                      # Landing page (/)
 │   ├── layout.tsx                    # Root layout + providers
@@ -253,7 +253,7 @@ Optional: **Upstash Redis** (production cache/SSE), **Sentry** (error tracking).
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/arnobt78/Job-Application-Tracker--NextJS-FullStack.git
+git clone https://github.com/ishreya-dev/Job-Application-Tracker--NextJS-FullStack.git
 cd Job-Application-Tracker--NextJS-FullStack
 ```
 
@@ -322,8 +322,8 @@ Also set **After sign-in URL** and **After sign-up URL** to `/dashboard` in the 
 **Example local PostgreSQL:**
 
 ```env
-DATABASE_URL="postgresql://postgres:password@localhost:5432/jobify?schema=public"
-DIRECT_URL="postgresql://postgres:password@localhost:5432/jobify?schema=public"
+DATABASE_URL="postgresql://postgres:password@localhost:5432/jobnix?schema=public"
+DIRECT_URL="postgresql://postgres:password@localhost:5432/jobnix?schema=public"
 ```
 
 ### Optional (recommended for production)
@@ -795,7 +795,7 @@ See also: `docs/VERCEL_PRODUCTION_GUARDRAILS.md`
 
 ## Conclusion
 
-Jobify demonstrates how a modern full-stack application combines **secure authentication**, **type-safe data access**, **performant caching**, and **polished UX** in a single Next.js codebase. Use it to:
+Jobnix demonstrates how a modern full-stack application combines **secure authentication**, **type-safe data access**, **performant caching**, and **polished UX** in a single Next.js codebase. Use it to:
 
 - Learn App Router patterns (SSR, Server Actions, Client Components)
 - Study production-ready cache and invalidation strategies

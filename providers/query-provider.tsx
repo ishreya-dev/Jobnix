@@ -1,3 +1,4 @@
+// providers/query-provider.tsx
 'use client';
 
 import { useEffect, useState } from 'react';

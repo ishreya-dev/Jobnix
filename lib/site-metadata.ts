@@ -1,30 +1,25 @@
+// lib/site-metadata.ts
 import type { Metadata } from "next";
-
-/** Production demo URL — hardcoded for consistent SEO */
-export const SITE_URL = "https://jobify-tracker.vercel.app";
-
-export const SITE_NAME = "Jobify";
+export const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://jobnix.vercel.app";
+export const SITE_NAME = "Jobnix";
 
 export const AUTHOR = {
-  name: "Arnob Mahmud",
-  url: "https://www.arnobmahmud.com/",
-  email: "contact@arnobmahmud.com",
+  name: "Shreya Kumari",
+  url: "https://github.com/ishreya-dev",
+  email: "your-email@example.com",
 } as const;
 
-export const DEFAULT_TITLE =
-  "Jobify — Job Tracking Application | Next.js, TypeScript, Clerk, Prisma, React Query, PostgreSQL FullStack";
+export const DEFAULT_TITLE = "Jobnix — Job Application Tracker";
 
-export const TITLE_TEMPLATE = "%s | Jobify — Job Application Tracker";
+export const TITLE_TEMPLATE = "%s | Jobnix";
 
 export const DEFAULT_DESCRIPTION =
-  "Jobify is a full-featured, production-ready job application tracking app for job seekers. Built with Next.js 16, TypeScript, Clerk authentication, Prisma ORM, React Query, and PostgreSQL. Track applications, analyze progress with charts and statistics, export data as CSV or Excel, and manage your job track with a beautiful, responsive dashboard.";
+  "Jobnix is a full-featured, production-ready job application tracking app for job seekers. Track applications, analyze progress with charts and statistics, export data as CSV or Excel, and manage your job search with a beautiful, responsive dashboard.";
 
 export const SEO_KEYWORDS = [
-  "Jobify",
+  "Jobnix",
   "job tracker",
   "job application tracker",
-  "job track tracker",
-  "job application management",
   "career tracker",
   "job hunt organizer",
   "Next.js",
@@ -50,9 +45,6 @@ export const SEO_KEYWORDS = [
   "responsive design",
   "full stack",
   "open source",
-  "Arnob Mahmud",
-  "job seeker",
-  "interview tracking",
 ];
 
 export const siteMetadata: Metadata = {
@@ -90,7 +82,6 @@ export const siteMetadata: Metadata = {
     },
   },
 
-  // Tab icon — app/favicon.ico (Next.js file convention + explicit metadata)
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
@@ -101,7 +92,7 @@ export const siteMetadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
-    siteName: "Jobify — Job Application Tracker",
+    siteName: SITE_NAME,
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
     images: [
@@ -109,14 +100,14 @@ export const siteMetadata: Metadata = {
         url: "/main.svg",
         width: 1200,
         height: 630,
-        alt: "Jobify — Modern Job Application Tracking Dashboard",
+        alt: "Jobnix — Modern Job Application Tracking Dashboard",
         type: "image/svg+xml",
       },
       {
         url: "/logo.svg",
         width: 164,
         height: 50,
-        alt: "Jobify Logo",
+        alt: "Jobnix Logo",
         type: "image/svg+xml",
       },
     ],
@@ -124,15 +115,15 @@ export const siteMetadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Jobify — Job Tracking Application",
+    title: "Jobnix — Job Application Tracker",
     description:
-      "Track job applications, analyze your progress, and export your job track data. Built with Next.js, TypeScript, Clerk, Prisma, and PostgreSQL.",
-    creator: "@arnob_t78",
-    site: "@arnob_t78",
+      "Track job applications, analyze your progress, and export your job search data. Built with Next.js, TypeScript, Clerk, Prisma, and PostgreSQL.",
+    creator: "@ishreya_dev",
+    site: "@ishreya_dev",
     images: [
       {
         url: "/main.svg",
-        alt: "Jobify — Job Application Tracking Dashboard",
+        alt: "Jobnix — Job Application Tracking Dashboard",
       },
     ],
   },

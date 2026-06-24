@@ -1,9 +1,9 @@
 /** localStorage keys for auth toasts after full-page navigation (survives Clerk sign-out) */
 export const AUTH_TOAST_KEYS = {
-  welcomeName: 'jobify_auth_welcome_name',
-  goodbyeName: 'jobify_auth_goodbye_name',
+  welcomeName: 'Jobnix_auth_welcome_name',
+  goodbyeName: 'Jobnix_auth_goodbye_name',
   /** Set before OAuth redirect — name resolved from Clerk on dashboard */
-  welcomePending: 'jobify_auth_welcome_pending',
+  welcomePending: 'Jobnix_auth_welcome_pending',
 } as const;
 
 function storage(): Storage | null {

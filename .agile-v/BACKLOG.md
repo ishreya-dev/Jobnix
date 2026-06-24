@@ -1,4 +1,4 @@
-# Product Backlog — Jobify
+# Product Backlog — Jobnix
 
 <!-- BL-XXXX → REQ-XXXX | Maintained by agile-v-product-owner -->
 
@@ -13,7 +13,7 @@
 - Shell skeletons, keepPreviousData, clear-filter layout (`93cddf6`)
 - Filter layout shift fix (reserved clear button width)
 - `await prefetchQuery` + `useQueryBodyLoading` + `useJobsListBodyLoading`
-- `PersistQueryClient` localStorage persist (`jobify-query-cache`)
+- `PersistQueryClient` localStorage persist (`jobnix-query-cache`)
 - Nav SSR avatar: `currentUser()` + `NavUserProvider` + `useNavUserSession` (`37f8525`)
 - Edit job `[id]` await prefetch + dialog shell on cold load
 - `invalidateAllJobQueries` incl. `filterOptions`; onSettled choke-point (`66bc670`)

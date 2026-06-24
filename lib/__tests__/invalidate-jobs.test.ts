@@ -76,6 +76,6 @@ describe('invalidateAllJobQueries', () => {
 
 describe('JOBS_CACHE_CHANNEL', () => {
   it('uses stable channel name for cross-tab sync', () => {
-    expect(JOBS_CACHE_CHANNEL).toBe('jobify-cache');
+    expect(JOBS_CACHE_CHANNEL).toBe('Jobnix-cache');
   });
 });

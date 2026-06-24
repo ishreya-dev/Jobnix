@@ -2,9 +2,9 @@
 
 ## Project Snapshot
 
-- **App:** Jobify job tracker (Next.js 14 + Clerk + Prisma + PostgreSQL)
+- **App:** Jobnix job tracker (Next.js 14 + Clerk + Prisma + PostgreSQL)
 - **State:** Production-ready, deployed to Vercel
-- **Live:** https://jobify-tracker.vercel.app/
+- **Live:** https://jobnix-tracker.vercel.app/
 
 ## Key Files (paths only — read in agent context)
 

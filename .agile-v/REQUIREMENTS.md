@@ -1,4 +1,4 @@
-# Requirements — Jobify C1
+# Requirements — Jobnix C1
 
 <!-- Revision: C1 | Baseline: Retroactive capture from existing codebase -->
 

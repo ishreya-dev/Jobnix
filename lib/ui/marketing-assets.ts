@@ -9,7 +9,7 @@ export type HeroCarouselSlide = {
 export const HERO_CAROUSEL_SLIDES: readonly HeroCarouselSlide[] = [
   {
     src: "/main.svg",
-    alt: "Jobify career journey illustration",
+    alt: "Jobnix career journey illustration",
     glow: "rgba(59,130,246,0.5)",
   },
   {

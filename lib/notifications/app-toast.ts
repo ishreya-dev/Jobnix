@@ -17,7 +17,7 @@ export {
 /** Post-login welcome — shown on dashboard after redirect */
 export function notifyWelcome(firstName: string): void {
   toast.success(`Hello ${firstName} 👋`, {
-    description: 'Welcome! Enjoy tracking your job applications with Jobify.',
+    description: 'Welcome! Enjoy tracking your job applications with Jobnix.',
     duration: 4500,
   });
 }

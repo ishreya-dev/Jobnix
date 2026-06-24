@@ -5,7 +5,7 @@ import { createPageMetadata } from "@/lib/site-metadata";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Jobify — Job Tracking Application | Organize Your job track",
+  title: "Jobnix — Job Tracking Application | Organize Your job track",
   description:
     "Track job applications, filter by status, visualize progress with analytics, and export your job track history. Free, open-source job tracker built with Next.js, TypeScript, Clerk, Prisma, and PostgreSQL.",
   path: "/",

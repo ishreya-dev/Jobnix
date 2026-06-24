@@ -1,3 +1,4 @@
+// components/layout/landing-nav.tsx
 'use client';
 
 import { NavShell } from '@/components/layout/nav-shell';

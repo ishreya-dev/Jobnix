@@ -4,7 +4,7 @@ import type { QueryClient } from '@tanstack/react-query';
 import { queryKeys } from '@/lib/query-keys';
 
 /** BroadcastChannel name for cross-tab cache sync after mutations */
-export const JOBS_CACHE_CHANNEL = 'jobify-cache';
+export const JOBS_CACHE_CHANNEL = 'jobnix-cache';
 
 export type JobsCacheMessage = { type: 'invalidate'; jobId?: string };
 

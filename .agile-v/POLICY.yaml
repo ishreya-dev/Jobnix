@@ -1,11 +1,11 @@
-# Agile V Policy — Jobify
+# Agile V Policy — Jobnix
 
 version: "1.0"
 cycle: C1
 updated: "2026-06-14T12:56:00Z"
 
 project:
-  name: jobify
+  name: jobnix
   regulatory_context: non-regulated
   primary_build_skill: build-agent-js
 

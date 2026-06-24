@@ -1,6 +1,6 @@
-# Jobify Project Walkthrough
+# Jobnix Project Walkthrough
 
-Demo: <https://jobify-tracker.vercel.app>
+Demo: <https://jobnix-tracker.vercel.app>
 
 ## Architecture
 
@@ -8,7 +8,7 @@ Demo: <https://jobify-tracker.vercel.app>
 force-dynamic
   dashboard/layout → currentUser() → NavUserProvider (avatar SSR)
   page.tsx → await prefetchQuery → HydrationBoundary
-  PersistQueryClient (localStorage jobify-query-cache, buster v1)
+  PersistQueryClient (localStorage jobnix-query-cache, buster v1)
   lib/jobs/queries.ts (unstable_cache + tags + Redis)
   utils/actions.ts (Clerk)
 

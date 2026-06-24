@@ -67,9 +67,9 @@ export const MARKETING_COPY = {
   },
   about: {
     heading: "About",
-    headingHighlight: "Jobify",
+    headingHighlight: "Jobnix",
     body1:
-      "Jobify helps you run a professional job track without spreadsheet chaos. One place for every application, every status change, and every insight you need to land your next role.",
+      "Jobnix helps you run a professional job track without spreadsheet chaos. One place for every application, every status change, and every insight you need to land your next role.",
     body2:
       "Built for speed and clarity: your dashboard is always current, whether you update from your laptop, phone, or a second browser tab.",
     ctaEyebrow: "Ready when you are",

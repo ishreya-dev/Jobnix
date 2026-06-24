@@ -1,7 +1,18 @@
 {
-  "name": "job-tracker",
-  "version": "0.3.0",
+  "name": "jobnix",
+  "version": "1.0.0",
   "private": true,
+  "description": "Job application tracker built with Next.js, Clerk, Prisma, and React Query",
+  "author": "Shreya Kumari",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ishreya-dev/jobnix"
+  },
+  "homepage": "https://jobnix.vercel.app",
+  "bugs": {
+    "url": "https://github.com/ishreya-dev/Jobnix.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "npx prisma generate && next build",

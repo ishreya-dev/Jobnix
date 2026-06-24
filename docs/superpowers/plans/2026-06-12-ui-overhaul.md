@@ -177,7 +177,7 @@ export function LandingNav() {
 - [ ] **Step 2: Verify no broken imports**
 
 ```bash
-cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app && npx tsc --noEmit 2>&1 | head -20
+cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app && npx tsc --noEmit 2>&1 | head -20
 ```
 
 Expected: 0 errors for these files (other errors may exist — ignore for now).
@@ -468,7 +468,7 @@ describe("CustomFormSelect required prop", () => {
 - [ ] **Step 2: Run tests — verify they fail**
 
 ```bash
-cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app && npx vitest run components/__tests__/FormComponents.test.tsx 2>&1 | tail -20
+cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app && npx vitest run components/__tests__/FormComponents.test.tsx 2>&1 | tail -20
 ```
 
 Expected: tests fail with "required is not a valid prop" or similar type error.
@@ -579,7 +579,7 @@ export default CustomFormSelect;
 - [ ] **Step 4: Run tests — verify they pass**
 
 ```bash
-cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app && npx vitest run components/__tests__/FormComponents.test.tsx 2>&1 | tail -10
+cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app && npx vitest run components/__tests__/FormComponents.test.tsx 2>&1 | tail -10
 ```
 
 Expected: `4 tests passed`.
@@ -662,7 +662,7 @@ export function useCreateJobMutation() {
 - [ ] **Step 2: Run existing mutation tests to confirm no regression**
 
 ```bash
-cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app && npx vitest run hooks/__tests__/useJobsMutation.test.ts 2>&1 | tail -10
+cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app && npx vitest run hooks/__tests__/useJobsMutation.test.ts 2>&1 | tail -10
 ```
 
 Expected: all existing tests pass.
@@ -783,7 +783,7 @@ export default CreateJobForm;
 - [ ] **Step 2: Typecheck**
 
 ```bash
-cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app && npx tsc --noEmit 2>&1 | grep "CreateJobForm" | head -10
+cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app && npx tsc --noEmit 2>&1 | grep "CreateJobForm" | head -10
 ```
 
 Expected: no errors for `CreateJobForm.tsx`.
@@ -946,7 +946,7 @@ git commit -m "feat: add onSuccess + standalone props to EditJobForm"
 - [ ] **Step 1: Install Shadcn Dialog component**
 
 ```bash
-cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app && npx shadcn@latest add dialog --yes 2>&1 | tail -10
+cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app && npx shadcn@latest add dialog --yes 2>&1 | tail -10
 ```
 
 Expected: `components/ui/dialog.tsx` created, `@radix-ui/react-dialog` added to package.json.
@@ -954,7 +954,7 @@ Expected: `components/ui/dialog.tsx` created, `@radix-ui/react-dialog` added to 
 - [ ] **Step 2: Verify dialog.tsx was created**
 
 ```bash
-ls /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app/components/ui/dialog.tsx
+ls /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app/components/ui/dialog.tsx
 ```
 
 Expected: file exists.
@@ -962,7 +962,7 @@ Expected: file exists.
 - [ ] **Step 3: Create dialogs directory and AddJobDialog**
 
 ```bash
-mkdir -p /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app/components/dialogs
+mkdir -p /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app/components/dialogs
 ```
 
 ```tsx
@@ -1146,7 +1146,7 @@ This is the new main page: page header (title + Add Job dialog trigger) + Search
 - [ ] **Step 1: Create dashboard folder and page**
 
 ```bash
-mkdir -p /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app/app/\(dashboard\)/dashboard
+mkdir -p /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app/app/\(dashboard\)/dashboard
 ```
 
 ```tsx
@@ -1228,7 +1228,7 @@ export default DashboardPage;
 - [ ] **Step 2: Verify no import errors**
 
 ```bash
-cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app && npx tsc --noEmit 2>&1 | grep "dashboard/page" | head -10
+cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app && npx tsc --noEmit 2>&1 | grep "dashboard/page" | head -10
 ```
 
 Expected: no errors for this file.
@@ -1282,7 +1282,7 @@ export function EditJobDialogPage({ jobId }: EditJobDialogPageProps) {
 - [ ] **Step 2: Create [id] folder and server page**
 
 ```bash
-mkdir -p "/Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app/app/(dashboard)/dashboard/[id]"
+mkdir -p "/Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app/app/(dashboard)/dashboard/[id]"
 ```
 
 ```tsx
@@ -1302,7 +1302,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Edit Job",
-  description: "Update or delete a job application in your Jobify tracker.",
+  description: "Update or delete a job application in your jobnix tracker.",
   path: "/dashboard",
   noIndex: true,
 });
@@ -1446,7 +1446,7 @@ export default DashboardLayout;
 - [ ] **Step 2: Typecheck**
 
 ```bash
-cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app && npx tsc --noEmit 2>&1 | grep "layout" | head -10
+cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app && npx tsc --noEmit 2>&1 | grep "layout" | head -10
 ```
 
 Expected: no errors for layout.tsx.
@@ -1675,7 +1675,7 @@ git commit -m "refactor: update links hrefs to /dashboard, remove /add-job entry
 - [ ] **Step 1: Run all tests**
 
 ```bash
-cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app && npm run test 2>&1 | tail -20
+cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app && npm run test 2>&1 | tail -20
 ```
 
 Expected: all tests pass (including new FormComponents tests).
@@ -1683,7 +1683,7 @@ Expected: all tests pass (including new FormComponents tests).
 - [ ] **Step 2: Typecheck**
 
 ```bash
-cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app && npm run typecheck 2>&1 | tail -20
+cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app && npm run typecheck 2>&1 | tail -20
 ```
 
 Expected: 0 type errors.
@@ -1691,7 +1691,7 @@ Expected: 0 type errors.
 - [ ] **Step 3: Lint**
 
 ```bash
-cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app && npm run lint 2>&1 | tail -20
+cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app && npm run lint 2>&1 | tail -20
 ```
 
 Expected: 0 errors (warnings acceptable).
@@ -1699,7 +1699,7 @@ Expected: 0 errors (warnings acceptable).
 - [ ] **Step 4: Build**
 
 ```bash
-cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app && npm run build 2>&1 | tail -30
+cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app && npm run build 2>&1 | tail -30
 ```
 
 Expected: build succeeds, all routes compiled.
@@ -1707,7 +1707,7 @@ Expected: build succeeds, all routes compiled.
 - [ ] **Step 5: Start dev server and manually verify**
 
 ```bash
-cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobify-app && npm run dev
+cd /Users/arnob_t78/Projects/ReactJS/react-course/18-nextjs-jobnix-app && npm run dev
 ```
 
 Manual checks:

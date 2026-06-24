@@ -1,4 +1,4 @@
-# Agile V State — Jobify
+# Agile V State — Jobnix
 
 | Field | Value |
 |---|---|
@@ -37,7 +37,7 @@
 | Prefetch | `await prefetchQuery` before `dehydrate` (dashboard/stats/[id]) |
 | Nav avatar | `dashboard/layout` `currentUser()` → `NavUserProvider` |
 | Cold skeletons | `useQueryBodyLoading` only when cache empty |
-| Persist | `PersistQueryClient` localStorage `jobify-query-cache` buster `v1` |
+| Persist | `PersistQueryClient` localStorage `jobnix-query-cache` buster `v1` |
 | No `loading.tsx` | inline skeletons on **data slots only** |
 | CRUD | `useJobsMutation` onSuccess `invalidateAll`+broadcast · onSettled same `broadcast:false` |
 | Server bust | `invalidateUserJobCaches` + tags + Redis + SSE |

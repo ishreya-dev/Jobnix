@@ -1,11 +1,11 @@
-# Agile V Playbook — Jobify
+# Agile V Playbook — Jobnix
 
 <!-- One-command operating guide | REQ-0024 | Load with every session -->
 
 ## One Command (paste in any new chat)
 
 ```
-/agile-v-core — Resume Jobify from .agile-v/PLAYBOOK.md. Read STATE.md + CHECKPOINTS.md first. Continue INT-0003. Map my request to REQ-XXXX. Follow SCOPE-V and log TRACE + DECISION.
+/agile-v-core — Resume Jobnix from .agile-v/PLAYBOOK.md. Read STATE.md + CHECKPOINTS.md first. Continue INT-0003. Map my request to REQ-XXXX. Follow SCOPE-V and log TRACE + DECISION.
 ```
 
 Shorter variant:
@@ -123,7 +123,7 @@ Archives: `cycles/C1/` (frozen after Gate 2)
 | SSR pages | `export const dynamic = 'force-dynamic'` |
 | Prefetch | `await prefetchQuery` before `dehydrate` (dashboard/stats/[id]) |
 | Cold skeletons | `useQueryBodyLoading` — skip when SSR/persist warm |
-| Persist | `PersistQueryClient` localStorage `jobify-query-cache` |
+| Persist | `PersistQueryClient` localStorage `jobnix-query-cache` |
 | No route `loading.tsx` | Inline skeletons on data slots only |
 | CRUD cache | onSuccess `invalidateAll`+broadcast · onSettled same `broadcast:false` |
 | Server bust | `invalidateUserJobCaches` + tags + Redis + SSE |

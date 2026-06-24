@@ -1,6 +1,8 @@
+// components/layout/site-logo.tsx
 import { SafeImage } from '@/components/ui/safe-image';
 import { UI_DIMENSIONS } from '@/lib/ui/dimensions';
 import { cn } from '@/lib/utils';
+import { SITE_NAME } from '@/lib/site-metadata';
 import Link from 'next/link';
 
 type SiteLogoProps = {
@@ -18,7 +20,7 @@ export function SiteLogo({
   const image = (
     <SafeImage
       src="/logo.svg"
-      alt="Jobify logo"
+      alt={`${SITE_NAME} logo`}
       width={UI_DIMENSIONS.logo.width}
       height={UI_DIMENSIONS.logo.height}
       className={className}

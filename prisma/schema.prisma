@@ -1,4 +1,4 @@
-// Jobify Prisma schema — Job model only (course leftovers Task/Tour/Token removed)
+// Jobnix Prisma schema — Job model only (course leftovers Task/Tour/Token removed)
 
 generator client {
   provider = "prisma-client-js"

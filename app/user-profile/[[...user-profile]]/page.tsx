@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'User Profile',
-  description: 'Manage your Jobify account settings and profile.',
+  description: 'Manage your Jobnix account settings and profile.',
   path: '/user-profile',
   noIndex: true,
 });

@@ -11,7 +11,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('\n=== Jobify DB Inspection ===\n');
+  console.log('\n=== jobnix DB Inspection ===\n');
 
   const jobs = await prisma.job.findMany({
     orderBy: { createdAt: 'desc' },
