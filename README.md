@@ -3,7 +3,7 @@
 > 📌 A modern, production-ready job tracking system that helps you organize applications, track progress, and visualize your career journey.
 
 🔗 Live Demo: https://jobnix.vercel.app
-🔗 Improvement Documnetation: ./PERFORMANCE-IMPROVEMENTS.md
+🔗 Improvement Documnetation: - [Performance Improvements](./PERFORMANCE-IMPROVEMENTS.md)
 📊 Track • Analyze • Grow
 
 ---
