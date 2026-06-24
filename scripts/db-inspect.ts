@@ -24,10 +24,11 @@ async function main() {
     return;
   }
 
-  const clerkIdCounts = jobs.reduce<Record<string, number>>((acc, job) => {
-    acc[job.clerkId] = (acc[job.clerkId] || 0) + 1;
-    return acc;
-  }, {});
+  // Type-safe reduce with explicit typing
+  const clerkIdCounts: Record<string, number> = {};
+  for (const job of jobs) {
+    clerkIdCounts[job.clerkId] = (clerkIdCounts[job.clerkId] || 0) + 1;
+  }
 
   console.log('Jobs per Clerk user (clerkId):');
   console.log('─'.repeat(60));
@@ -36,20 +37,25 @@ async function main() {
   }
 
   // Status breakdown (helps debug stats mismatch)
-  const statusCounts = jobs.reduce<Record<string, number>>((acc, job) => {
-    acc[job.status] = (acc[job.status] || 0) + 1;
-    return acc;
-  }, {});
+  const statusCounts: Record<string, number> = {};
+  for (const job of jobs) {
+    statusCounts[job.status] = (statusCounts[job.status] || 0) + 1;
+  }
+  
   console.log('\nJobs per status (helps debug stats total mismatch):');
   console.log('─'.repeat(60));
   for (const [status, count] of Object.entries(statusCounts)) {
     console.log(`  "${status}": ${count} job(s)`);
   }
+  
   const knownStatuses = ['pending', 'interview', 'declined'];
-  const unknownCount = Object.entries(statusCounts).reduce(
-    (sum, [s, c]) => (knownStatuses.includes(s.toLowerCase()) ? sum : sum + c),
-    0
-  );
+  let unknownCount = 0;
+  for (const [status, count] of Object.entries(statusCounts)) {
+    if (!knownStatuses.includes(status.toLowerCase())) {
+      unknownCount += count;
+    }
+  }
+  
   if (unknownCount > 0) {
     console.log(`\n  ⚠️  ${unknownCount} job(s) have non-standard status (won't appear in stats)`);
   }
