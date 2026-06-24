@@ -1,13 +1,13 @@
 /**
  * Invalidation bus: in-memory (same instance) + Redis Streams (cross-instance SSE).
- * publishInvalidation is called from server actions after CRUD.
+ * Redis is currently disabled to prevent Map maximum size exceeded errors.
  */
-
-import {
-  pushInvalidationStreamEvent,
+import { 
+  isRedisAvailable, 
+  pushInvalidationStreamEvent, 
   readInvalidationStreamEvents,
   type StreamInvalidationPayload,
-} from '@/lib/redis';
+} from './redis';
 
 export type JobsInvalidationEvent = {
   type: 'invalidate';
@@ -49,6 +49,7 @@ export async function publishInvalidation(
 ): Promise<void> {
   const event: JobsInvalidationEvent = { type: 'invalidate', jobId };
 
+  // In-memory listeners
   const listeners = getListenerMap().get(userId);
   listeners?.forEach((listener) => {
     try {
@@ -58,7 +59,10 @@ export async function publishInvalidation(
     }
   });
 
-  await pushInvalidationStreamEvent(userId, jobId);
+  // Redis stream (disabled in development)
+  if (await isRedisAvailable()) {
+    await pushInvalidationStreamEvent(userId, jobId);
+  }
 }
 
 /**
@@ -70,6 +74,11 @@ export async function awaitRemoteInvalidations(
   lastStreamId: string,
   blockMs = 5_000
 ): Promise<{ events: JobsInvalidationEvent[]; lastId: string }> {
+  // If Redis is not available, return empty events
+  if (!(await isRedisAvailable())) {
+    return { events: [], lastId: lastStreamId };
+  }
+
   const payloads: StreamInvalidationPayload[] =
     await readInvalidationStreamEvents(userId, lastStreamId, blockMs);
 

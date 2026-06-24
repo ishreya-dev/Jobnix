@@ -1,38 +1,32 @@
 // utils/actions.ts
 "use server";
 
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
-import { jobService } from "@/lib/services/job-service";
 import { log } from "@/lib/logger";
 import { 
   AppError, 
   ValidationError, 
-  NotFoundError, 
-  UnauthorizedError,
-  handleServerError 
+  NotFoundError,
 } from "@/lib/errors";
+import { 
+  ApiResponse, 
+  successResponse, 
+  errorResponse,
+  appErrorToResponse 
+} from "@/lib/types/api";
+import { authenticateAndRedirect } from "@/lib/auth/auth-utils";
+import { jobService } from "@/lib/services/job-service";
 import { JobType, CreateAndEditJobType, createAndEditJobSchema } from "./types";
+import { toJobDTO, toJobDTOs, type JobResponseDTO } from "@/lib/dto/job.dto";
 import type { JobFilterOptions } from "@/lib/jobs/filter-types";
 import type { StatsResult } from "@/lib/jobs/queries";
 
-async function authenticateAndRedirect(): Promise<string> {
-  const { userId } = await auth();
-  if (!userId) {
-    log.warn("Unauthenticated access attempt, redirecting to home");
-    redirect("/");
-  }
-  return userId;
-}
-
 export async function createJobAction(
   values: CreateAndEditJobType
-): Promise<JobType | null> {
+): Promise<ApiResponse<JobResponseDTO>> {
   try {
     const userId = await authenticateAndRedirect();
     log.info("Creating new job", { userId });
     
-    // Validate input
     const validated = createAndEditJobSchema.safeParse(values);
     if (!validated.success) {
       throw new ValidationError("Invalid job data", validated.error.errors);
@@ -40,14 +34,13 @@ export async function createJobAction(
     
     const result = await jobService.createJob(userId, values);
     log.info("Job created successfully", { userId, jobId: result.id });
-    return result;
+    return successResponse(toJobDTO(result));
   } catch (error) {
     log.error("Failed to create job", error);
-    // Re-throw specific errors, return null for others
     if (error instanceof AppError) {
-      throw error;
+      return appErrorToResponse(error);
     }
-    return null;
+    return errorResponse("INTERNAL_ERROR", "An unexpected error occurred");
   }
 }
 
@@ -67,12 +60,12 @@ export async function getAllJobsAction({
   monthYear,
   page = 1,
   limit = 10,
-}: GetAllJobsActionTypes): Promise<{
-  jobs: JobType[];
+}: GetAllJobsActionTypes): Promise<ApiResponse<{
+  jobs: JobResponseDTO[];
   count: number;
   page: number;
   totalPages: number;
-}> {
+}>> {
   try {
     const userId = await authenticateAndRedirect();
     log.debug("Fetching jobs", { userId, search, jobStatus, page });
@@ -86,18 +79,27 @@ export async function getAllJobsAction({
       limit,
     });
     
-    log.debug("Jobs fetched", { userId, count: result.jobs.length, totalPages: result.totalPages });
-    return result;
+    log.debug("Jobs fetched", { userId, count: result.jobs.length });
+    return successResponse({
+      jobs: toJobDTOs(result.jobs),
+      count: result.count,
+      page: result.page,
+      totalPages: result.totalPages,
+    }, {
+      page: result.page,
+      totalPages: result.totalPages,
+      totalCount: result.count,
+    });
   } catch (error) {
     log.error("Failed to fetch jobs", error);
     if (error instanceof AppError) {
-      throw error;
+      return appErrorToResponse(error);
     }
-    return { jobs: [], count: 0, page: 1, totalPages: 0 };
+    return errorResponse("INTERNAL_ERROR", "An unexpected error occurred");
   }
 }
 
-export async function getJobFilterOptionsAction(): Promise<JobFilterOptions> {
+export async function getJobFilterOptionsAction(): Promise<ApiResponse<JobFilterOptions>> {
   try {
     const userId = await authenticateAndRedirect();
     log.debug("Fetching job filter options", { userId });
@@ -105,18 +107,18 @@ export async function getJobFilterOptionsAction(): Promise<JobFilterOptions> {
     const { getCachedJobFilterOptions } = await import("@/lib/jobs/queries");
     const result = await getCachedJobFilterOptions(userId);
     
-    log.debug("Job filter options fetched", { userId, months: result.months.length });
-    return result;
+    log.debug("Job filter options fetched", { userId });
+    return successResponse(result);
   } catch (error) {
     log.error("Failed to fetch job filter options", error);
     if (error instanceof AppError) {
-      throw error;
+      return appErrorToResponse(error);
     }
-    return { months: [] };
+    return errorResponse("INTERNAL_ERROR", "An unexpected error occurred");
   }
 }
 
-export async function deleteJobAction(id: string): Promise<JobType | null> {
+export async function deleteJobAction(id: string): Promise<ApiResponse<JobResponseDTO>> {
   try {
     const userId = await authenticateAndRedirect();
     log.info("Deleting job", { userId, jobId: id });
@@ -127,47 +129,45 @@ export async function deleteJobAction(id: string): Promise<JobType | null> {
     }
     
     log.info("Job deleted successfully", { userId, jobId: id });
-    return result;
+    return successResponse(toJobDTO(result));
   } catch (error) {
     log.error("Failed to delete job", error, { jobId: id });
     if (error instanceof AppError) {
-      throw error;
+      return appErrorToResponse(error);
     }
-    return null;
+    return errorResponse("INTERNAL_ERROR", "An unexpected error occurred");
   }
 }
 
-export async function getSingleJobAction(id: string): Promise<JobType | null> {
+export async function getSingleJobAction(id: string): Promise<ApiResponse<JobResponseDTO>> {
   try {
     const userId = await authenticateAndRedirect();
     log.debug("Fetching single job", { userId, jobId: id });
     
     const job = await jobService.getJob(userId, id);
     if (!job) {
-      log.warn("Job not found", { userId, jobId: id });
-      redirect("/dashboard");
+      throw new NotFoundError("Job");
     }
     
     log.debug("Job fetched successfully", { userId, jobId: id });
-    return job;
+    return successResponse(toJobDTO(job));
   } catch (error) {
     log.error("Failed to fetch single job", error, { jobId: id });
     if (error instanceof AppError) {
-      throw error;
+      return appErrorToResponse(error);
     }
-    redirect("/dashboard");
+    return errorResponse("INTERNAL_ERROR", "An unexpected error occurred");
   }
 }
 
 export async function updateJobAction(
   id: string,
   values: CreateAndEditJobType
-): Promise<JobType | null> {
+): Promise<ApiResponse<JobResponseDTO>> {
   try {
     const userId = await authenticateAndRedirect();
     log.info("Updating job", { userId, jobId: id });
     
-    // Validate input
     const validated = createAndEditJobSchema.safeParse(values);
     if (!validated.success) {
       throw new ValidationError("Invalid job data", validated.error.errors);
@@ -179,17 +179,17 @@ export async function updateJobAction(
     }
     
     log.info("Job updated successfully", { userId, jobId: id });
-    return result;
+    return successResponse(toJobDTO(result));
   } catch (error) {
     log.error("Failed to update job", error, { jobId: id });
     if (error instanceof AppError) {
-      throw error;
+      return appErrorToResponse(error);
     }
-    return null;
+    return errorResponse("INTERNAL_ERROR", "An unexpected error occurred");
   }
 }
 
-export async function getStatsAction(): Promise<StatsResult> {
+export async function getStatsAction(): Promise<ApiResponse<StatsResult>> {
   try {
     const userId = await authenticateAndRedirect();
     log.debug("Fetching stats", { userId });
@@ -197,18 +197,18 @@ export async function getStatsAction(): Promise<StatsResult> {
     const result = await jobService.getStats(userId);
     
     log.debug("Stats fetched", { userId });
-    return result;
+    return successResponse(result);
   } catch (error) {
     log.error("Failed to fetch stats", error);
     if (error instanceof AppError) {
-      throw error;
+      return appErrorToResponse(error);
     }
-    redirect("/dashboard");
+    return errorResponse("INTERNAL_ERROR", "An unexpected error occurred");
   }
 }
 
 export async function getChartsDataAction(): Promise<
-  Array<{ date: string; count: number }>
+  ApiResponse<Array<{ date: string; count: number }>>
 > {
   try {
     const userId = await authenticateAndRedirect();
@@ -216,18 +216,18 @@ export async function getChartsDataAction(): Promise<
     
     const result = await jobService.getCharts(userId);
     
-    log.debug("Charts data fetched", { userId, dataPoints: result.length });
-    return result;
+    log.debug("Charts data fetched", { userId });
+    return successResponse(result);
   } catch (error) {
     log.error("Failed to fetch charts data", error);
     if (error instanceof AppError) {
-      throw error;
+      return appErrorToResponse(error);
     }
-    redirect("/dashboard");
+    return errorResponse("INTERNAL_ERROR", "An unexpected error occurred");
   }
 }
 
-export async function getAllJobsForDownloadAction(): Promise<JobType[]> {
+export async function getAllJobsForDownloadAction(): Promise<ApiResponse<JobResponseDTO[]>> {
   try {
     const userId = await authenticateAndRedirect();
     log.info("Downloading all jobs", { userId });
@@ -239,12 +239,12 @@ export async function getAllJobsForDownloadAction(): Promise<JobType[]> {
     });
     
     log.info("Jobs downloaded", { userId, count: result.length });
-    return result;
+    return successResponse(toJobDTOs(result));
   } catch (error) {
     log.error("Failed to download jobs", error);
     if (error instanceof AppError) {
-      throw error;
+      return appErrorToResponse(error);
     }
-    return [];
+    return errorResponse("INTERNAL_ERROR", "An unexpected error occurred");
   }
 }

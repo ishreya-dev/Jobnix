@@ -47,6 +47,7 @@ async function DashboardPage({ searchParams }: DashboardPageProps) {
 
   const queryClient = new QueryClient();
 
+  // Run all queries in parallel with limit: 10 for jobs
   await Promise.all([
     queryClient.prefetchQuery({
       queryKey: queryKeys.jobs.list(
@@ -63,6 +64,7 @@ async function DashboardPage({ searchParams }: DashboardPageProps) {
           jobMode: filters.jobMode,
           monthYear: filters.monthYear,
           page: filters.page,
+          limit: 10, // ← Only load 10 jobs initially for faster load
         }),
     }),
     queryClient.prefetchQuery({
