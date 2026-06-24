@@ -64,6 +64,8 @@
 
 ## 🏗️ Architecture
 
+## 🏗️ Architecture
+
 ```mermaid
 flowchart TD
 User --> UI
@@ -71,7 +73,7 @@ UI --> Actions
 Actions --> Service
 Service --> Repository
 Repository --> Database
-Service --> Cache
+Service --> Cache ```  
 
 ## 📁 Project Structure
 
@@ -132,7 +134,8 @@ npm run typecheck
 | Styling | Tailwind CSS |
 | Testing | Vitest |
 
-## 🛡️ Tech Stack Badges (Bottom Mirror)
+```markdown
+## 🛡️ Tech Stack Badges
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black)
 ![React](https://img.shields.io/badge/React-19-blue)
