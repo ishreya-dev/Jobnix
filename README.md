@@ -2,7 +2,8 @@
 
 > 📌 A modern, production-ready job tracking system that helps you organize applications, track progress, and visualize your career journey.
 
-🔗 Live Demo: https://jobnix.vercel.app  
+🔗 Live Demo: https://jobnix.vercel.app
+🔗 Improvement Documnetation: ./PERFORMANCE-IMPROVEMENTS.md
 📊 Track • Analyze • Grow
 
 ---
@@ -64,16 +65,15 @@
 
 ## 🏗️ Architecture
 
-## 🏗️ Architecture
-
 ```mermaid
 flowchart TD
-User --> UI
-UI --> Actions
-Actions --> Service
-Service --> Repository
-Repository --> Database
-Service --> Cache ```  
+    User[User/Browser] --> UI[UI Components]
+    UI --> Actions[Server Actions<br/>utils/actions.ts]
+    Actions --> Service[Service Layer<br/>lib/services/job-service.ts]
+    Service --> Repository[Repository Layer<br/>lib/repositories/job-repository.ts]
+    Repository --> Database[(PostgreSQL<br/>Database)]
+    Service --> Cache[Cache Layer<br/>lib/jobs/queries.ts]
+    Cache --> Database
 
 ## 📁 Project Structure
 
